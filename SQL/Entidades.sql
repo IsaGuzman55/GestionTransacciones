@@ -38,3 +38,6 @@ CREATE TABLE Pagos(
     FOREIGN KEY (FacturaId) REFERENCES Facturas(Id),
     FOREIGN KEY (TransaccionId) REFERENCES Transacciones(Id)
 );
+
+
+ALTER TABLE Clientes AUTO_INCREMENT = 1;

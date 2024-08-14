@@ -51,6 +51,10 @@ namespace GestionTransacciones.Models
         /* ------- */
         public string Rol {get; set;}
 
+        /* ------- */
+        public ICollection<Factura> Facturas {get; set;}
+        public ICollection<Transaccion> Transacciones {get; set;} 
+
         
     }
 }
