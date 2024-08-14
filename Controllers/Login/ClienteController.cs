@@ -80,6 +80,10 @@ namespace GestionTransacciones.Controllers{
                 return View();
             }
 
+            if(clienteEncontrado.Correo == "robinson.cortes@riwi.io" && clienteEncontrado.Rol == "Admin"){
+                return RedirectToAction("Admin", "Cliente");
+            }
+
             // Iniciar sesion con los datos del usuario
             var claims = new List<Claim>
             {
@@ -115,5 +119,13 @@ namespace GestionTransacciones.Controllers{
             return RedirectToAction("Login", "Cliente");
         }
         
+
+
+        // ADMIN
+        [HttpGet]
+        public IActionResult Admin(){
+            return View();
+            
+        }
     }
 }

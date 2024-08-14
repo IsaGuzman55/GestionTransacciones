@@ -30,6 +30,12 @@ namespace GestionTransacciones.Models
         /* ------- */
         public int ClienteId {get; set;}
 
+        /* ------- */
+        public Cliente cliente {get; set;}
+
+
+        public ICollection<Pago> pagos {get; set;} 
+
 
         
     }

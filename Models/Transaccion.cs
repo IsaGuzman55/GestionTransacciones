@@ -10,7 +10,7 @@ namespace GestionTransacciones.Models
     public class Transaccion
     {
         /* ------- */
-        public int Id {get; set;}
+        public string Id {get; set;}
         
         /* ------- */
         [Required(ErrorMessage = "La fecha de la transaccion es obligatoria.")]
@@ -35,16 +35,15 @@ namespace GestionTransacciones.Models
         [Required(ErrorMessage = "La plataforma de la transaccion es necesaria es necesaria.")]
         [MinLength(1, ErrorMessage = "El correo debe tener al menos {1} caracteres.")]
         [MaxLength(100, ErrorMessage = "El correo debe tener como maximo {1} caracteres.")]
-        public string CorrPlataformaeo {get; set;}
-        
-        /* ------- */
-        [Required(ErrorMessage = "La contraseña del cliente es necesaria.")]
-        [MinLength(1, ErrorMessage = "La contraseña debe tener al menos {1} caracteres.")]
-        [MaxLength(100, ErrorMessage = "La contraseña debe tener como maximo {1} caracteres.")]
-        public string Contrasena {get; set;}
+        public string Plataforma {get; set;}
 
         /* ------- */
-        public string Rol {get; set;}
+        public int ClienteId {get; set;}
+
+
+
+        public Cliente cliente {get; set;}
+        public ICollection<Pago> pagos {get; set;} 
 
         
     }

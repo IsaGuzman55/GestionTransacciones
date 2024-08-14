@@ -12,7 +12,7 @@ builder.Services.AddControllersWithViews();
 
 // AddScoped
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
-
+builder.Services.AddScoped<IExcelRepository, ExcelRepository>();
 
 /* DATABASE */
 builder.Services.AddDbContext<PruebaContext>(options =>

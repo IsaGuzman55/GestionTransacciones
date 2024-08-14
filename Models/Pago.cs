@@ -19,6 +19,11 @@ namespace GestionTransacciones.Models
 
         /* ------- */
         public int MontoPagado {get; set;}
+
+
+        /* ------- */
+        public Transaccion Transaccion {get; set;}
+        public Factura Factura {get; set;}
         
     }
 }

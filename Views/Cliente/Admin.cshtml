@@ -1,0 +1,46 @@
+@* @model List<Cliente>
+@{
+    Layout = null;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                             <thead class="table-dark">
+                    <tr>
+                                    <td>Id</td>
+                                    <td>Nombre</td>
+                                    <td>correo</td>
+                                    <td>Identificacion</td>
+                                    <td>Direccion</td>
+                                    <td>Telefono</td>
+                                    <td>Contraseña</td>
+                                    <td>Rol</td>
+                                </tr>
+                    </thead>
+                            
+                            @foreach( var cliente in Model){
+                                 <tbody>
+                                <tr>
+                                    <td>@cliente.Id</td>
+                                    <td>@cliente.Nombre</td>
+                                    <td>@cliente.Correo</td>
+                                    <td>@cliente.Identificacion</td>
+                                    <td>@cliente.Direccion</td>
+                                    <td>@cliente.Telefono</td>
+                                    <td>@cliente.Contrasena</td>
+                                    <td>@cliente.Rol</td>
+                                </tr>
+                            </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> *@
