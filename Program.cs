@@ -1,10 +1,18 @@
+using GestionTransacciones.App.interfaces;
+using GestionTransacciones.App.Services;
 using GestionTransacciones.Data;
+using GestionTransacciones.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// AddScoped
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+
 
 /* DATABASE */
 builder.Services.AddDbContext<PruebaContext>(options =>
@@ -14,7 +22,14 @@ builder.Services.AddDbContext<PruebaContext>(options =>
     )
 );
 
-// AddScoped
+
+/* Configuracion de cookies */
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>{
+        options.LoginPath = "/Cliente/Login";
+        options.LogoutPath = "/Cliente/LogOut";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    });
 
 
 var app = builder.Build();
@@ -32,11 +47,21 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// Evitar caché del navegador
+app.Use(async (context, next) =>
+{
+    context.Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
+    context.Response.Headers["Pragma"] = "no-cache";
+    context.Response.Headers["Expires"] = "-1";
+    await next();
+});
+
+// Autenticacion
 app.UseAuthorization();
 app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Cliente}/{action=Login}/{id?}");
 
 app.Run();

@@ -1,0 +1,42 @@
+@model Cliente;
+@{
+    Layout = null;
+}
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<body>
+    <div class="row mt-5 justify-content-center">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Registrarse</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Cliente" asp-action="SignUp" method="post">
+                        <input class="form-control mb-3" type="text" placeholder="Nombre" asp-for="Nombre" required>
+                        <input class="form-control mb-3" type="text" placeholder="Identificacion" asp-for="Identificacion" required>
+                        <input class="form-control mb-3" type="text" placeholder="Direccion" asp-for="Direccion" required>
+                        <input class="form-control mb-3" type="text" placeholder="Telefono" asp-for="Telefono" required>
+                        <input class="form-control mb-3" type="text" placeholder="Correo" asp-for="Correo" required>
+                        <input class="form-control mb-3" type="text" placeholder="Contrasena" asp-for="Contrasena" required>
+                        <div class="d-grid gap-2 mb-3">
+                            <button class="btn btn-primary">Registrarse</button>
+                        </div>
+
+                        @* Mostrar el mensaje si ocurre algun error *@
+                        @if(ViewData["Mensaje"]!= null){
+                            <div class="alert alert-danger" role="alert">
+                                @ViewData["Mensaje"]
+                            </div>
+                        }
+                        <h4>¿Ya tienes una cuenta?</h4><a asp-controller="Cliente" asp-action="Login">Iniciar sesion</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
